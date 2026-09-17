@@ -1144,14 +1144,14 @@ modbus:
       #   state_class: measurement
       #   scan_interval: *scan_interval_fast
 
-      # - name: EMS mode selection raw
-      #   unique_id: sg_ems_mode_selection_raw
-      #   device_address: !secret sungrow_modbus_device_address
-      #   address: &sg_reg_ems_mode_selection 13049 # reg 13050
-      #   input_type: holding
-      #   data_type: uint16
-      #   state_class: measurement
-      #   scan_interval: *scan_interval_fast
+      - name: EMS mode selection raw
+        unique_id: sg_ems_mode_selection_raw
+        device_address: !secret sungrow_modbus_device_address
+        address: &sg_reg_ems_mode_selection 13049 # reg 13050
+        input_type: holding
+        data_type: uint16
+        state_class: measurement
+        scan_interval: *scan_interval_fast
 
       # - name: Battery forced charge discharge cmd raw
       #   unique_id: sg_battery_forced_charge_discharge_cmd_raw
