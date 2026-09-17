@@ -721,18 +721,18 @@ modbus:
         scale: 1
         scan_interval: *scan_interval_realtime
 
-      - name: Daily PV generation
-        unique_id: sg_daily_pv_generation
-        device_address: !secret sungrow_modbus_device_address
-        address: 13001 # reg 13002
-        input_type: input
-        data_type: uint16
-        precision: 1
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scale: 0.1
-        scan_interval: *scan_interval_slowest
+      # - name: Daily PV generation
+      #   unique_id: sg_daily_pv_generation
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: 13001 # reg 13002
+      #   input_type: input
+      #   data_type: uint16
+      #   precision: 1
+      #   unit_of_measurement: kWh
+      #   device_class: energy
+      #   state_class: total_increasing
+      #   scale: 0.1
+      #   scan_interval: *scan_interval_slowest
 
       - name: Total PV generation
         unique_id: sg_total_pv_generation
@@ -1121,14 +1121,14 @@ modbus:
         state_class: measurement
         scan_interval: *scan_interval_fast
 
-      - name: Load adjustment mode enable raw
-        unique_id: sg_load_adjustment_mode_enable_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_load_adjustment_mode_enable 13010 # reg 13011
-        input_type: holding
-        data_type: uint16
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # - name: Load adjustment mode enable raw
+      #   unique_id: sg_load_adjustment_mode_enable_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_load_adjustment_mode_enable 13010 # reg 13011
+      #   input_type: holding
+      #   data_type: uint16
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
       # BUG: 2026-01-10. Deactivated for now, see issue #643
       # https://github.com/mkaiser/Sungrow-SHx-Inverter-Modbus-Home-Assistant/issues/643
@@ -1144,141 +1144,141 @@ modbus:
       #   state_class: measurement
       #   scan_interval: *scan_interval_fast
 
-      - name: EMS mode selection raw
-        unique_id: sg_ems_mode_selection_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_ems_mode_selection 13049 # reg 13050
-        input_type: holding
-        data_type: uint16
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # - name: EMS mode selection raw
+      #   unique_id: sg_ems_mode_selection_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_ems_mode_selection 13049 # reg 13050
+      #   input_type: holding
+      #   data_type: uint16
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
-      - name: Battery forced charge discharge cmd raw
-        unique_id: sg_battery_forced_charge_discharge_cmd_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_forced_charge_discharge_cmd_raw 13050 # reg 13051
-        input_type: holding
-        data_type: uint16
-        precision: 0
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # - name: Battery forced charge discharge cmd raw
+      #   unique_id: sg_battery_forced_charge_discharge_cmd_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_forced_charge_discharge_cmd_raw 13050 # reg 13051
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 0
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
-      - name: Battery forced charge discharge power
-        unique_id: sg_battery_forced_charge_discharge_power
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_battery_forced_charge_discharge_power 13051 # reg 13052
-        input_type: holding
-        data_type: uint16
-        precision: 0
-        # datasheet says:
-        # 0 to 5000 W for SH*K-*
-        # 0 to 100 % for SH*.0RT
-        # for my SH10RT it is set in Watt, not in %
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # - name: Battery forced charge discharge power
+      #   unique_id: sg_battery_forced_charge_discharge_power
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_battery_forced_charge_discharge_power 13051 # reg 13052
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 0
+      #   # datasheet says:
+      #   # 0 to 5000 W for SH*K-*
+      #   # 0 to 100 % for SH*.0RT
+      #   # for my SH10RT it is set in Watt, not in %
+      #   unit_of_measurement: W
+      #   device_class: power
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
-      - name: Battery max SoC
-        unique_id: uid_sg_battery_max_soc
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_max_soc 13057 # reg 13058
-        input_type: holding
-        data_type: uint16
-        precision: 1
-        unit_of_measurement: "%"
-        device_class: battery
-        state_class: measurement
-        scale: 0.1
-        scan_interval: *scan_interval_fast
+      # - name: Battery max SoC
+      #   unique_id: uid_sg_battery_max_soc
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_max_soc 13057 # reg 13058
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 1
+      #   unit_of_measurement: "%"
+      #   device_class: battery
+      #   state_class: measurement
+      #   scale: 0.1
+      #   scan_interval: *scan_interval_fast
 
-      - name: Battery min SoC
-        unique_id: uid_sg_battery_min_soc
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_min_soc 13058 # reg 13059
-        input_type: holding
-        data_type: uint16
-        precision: 1
-        unit_of_measurement: "%"
-        device_class: battery
-        state_class: measurement
-        scale: 0.1
-        scan_interval: *scan_interval_fast
+      # - name: Battery min SoC
+      #   unique_id: uid_sg_battery_min_soc
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_min_soc 13058 # reg 13059
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 1
+      #   unit_of_measurement: "%"
+      #   device_class: battery
+      #   state_class: measurement
+      #   scale: 0.1
+      #   scan_interval: *scan_interval_fast
 
-      # in the documentation this is called "feed-in power limit"
-      - name: Export power limit
-        unique_id: sg_export_power_limit
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_export_power_limit 13073 # reg 13074
-        input_type: holding
-        data_type: uint16
-        precision: 0
-        unit_of_measurement: "W"
-        device_class: power
-        state_class: measurement
-        scale: 1
-        scan_interval: *scan_interval_fast
+      # # in the documentation this is called "feed-in power limit"
+      # - name: Export power limit
+      #   unique_id: sg_export_power_limit
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_export_power_limit 13073 # reg 13074
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 0
+      #   unit_of_measurement: "W"
+      #   device_class: power
+      #   state_class: measurement
+      #   scale: 1
+      #   scan_interval: *scan_interval_fast
 
-      # called "Off-grid option" in spec
-      - name: Backup mode raw
-        unique_id: sg_backup_mode_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_backup_mode 13074 # reg 13075
-        input_type: holding
-        data_type: uint16
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # # called "Off-grid option" in spec
+      # - name: Backup mode raw
+      #   unique_id: sg_backup_mode_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_backup_mode 13074 # reg 13075
+      #   input_type: holding
+      #   data_type: uint16
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
-      # called "Feed-in limitation" in spec
-      - name: Export power limit mode raw
-        unique_id: sg_export_power_limit_mode_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_export_power_limit_mode 13086 # reg 13087
-        input_type: holding
-        data_type: uint16
-        precision: 0
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # # called "Feed-in limitation" in spec
+      # - name: Export power limit mode raw
+      #   unique_id: sg_export_power_limit_mode_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_export_power_limit_mode 13086 # reg 13087
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 0
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
-      # TODO test and implement from theunknown86
-      # TODO datasheet name: Feed-in Limitation Ratio
-      # https://github.com/mkaiser/Sungrow-SHx-Inverter-Modbus-Home-Assistant/issues/554#issuecomment-3170420960
-      # MG5-6RL is not supported.
-      # 0xAA: Enable
-      # 0x55: Disable
-      - name: Active power limitation raw
-        unique_id: sg_active_power_limitation_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &reg_active_power_limitation_raw 13088 # reg 13089
-        input_type: holding
-        data_type: uint16
-        scan_interval: *scan_interval_fast
-        state_class: measurement
+      # # TODO test and implement from theunknown86
+      # # TODO datasheet name: Feed-in Limitation Ratio
+      # # https://github.com/mkaiser/Sungrow-SHx-Inverter-Modbus-Home-Assistant/issues/554#issuecomment-3170420960
+      # # MG5-6RL is not supported.
+      # # 0xAA: Enable
+      # # 0x55: Disable
+      # - name: Active power limitation raw
+      #   unique_id: sg_active_power_limitation_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &reg_active_power_limitation_raw 13088 # reg 13089
+      #   input_type: holding
+      #   data_type: uint16
+      #   scan_interval: *scan_interval_fast
+      #   state_class: measurement
 
       # MG5-6RL is not supported.
       # 0-1000
-      - name: Active power limitation ratio raw
-        unique_id: sg_active_power_limitation_ratio_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &reg_active_power_limitation_ratio_raw 13089 # reg 13090
-        input_type: holding
-        data_type: uint16
-        scan_interval: *scan_interval_fast
-        state_class: measurement
-        scale: 0.1
-        unit_of_measurement: "%"
+      # - name: Active power limitation ratio raw
+      #   unique_id: sg_active_power_limitation_ratio_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &reg_active_power_limitation_ratio_raw 13089 # reg 13090
+      #   input_type: holding
+      #   data_type: uint16
+      #   scan_interval: *scan_interval_fast
+      #   state_class: measurement
+      #   scale: 0.1
+      #   unit_of_measurement: "%"
 
-      - name: Battery reserved SoC for backup
-        unique_id: sg_battery_reserved_soc_for_backup
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_reserved_soc_backup 13099 # reg 13100
-        input_type: holding
-        data_type: uint16
-        unit_of_measurement: "%"
-        device_class: battery
-        state_class: measurement
-        scale: 1
-        scan_interval: *scan_interval_fast
+      # - name: Battery reserved SoC for backup
+      #   unique_id: sg_battery_reserved_soc_for_backup
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_reserved_soc_backup 13099 # reg 13100
+      #   input_type: holding
+      #   data_type: uint16
+      #   unit_of_measurement: "%"
+      #   device_class: battery
+      #   state_class: measurement
+      #   scale: 1
+      #   scan_interval: *scan_interval_fast
 
       # Inverter Firmware version from register 13250 to 13264 as UTF8 string
       # NOTE: SH3.0-10RS and MG5-6RL are NOT supported
@@ -1316,72 +1316,72 @@ modbus:
       # NOTE: 2025-12-10
       # from 'theunknown' too, but can't find this in the datasheet
       # https://github.com/mkaiser/Sungrow-SHx-Inverter-Modbus-Home-Assistant/issues/554#issuecomment-3170420960
-      - name: APL shutdown at zero raw
-        unique_id: sg_apl_shutdown_on_zero_raw
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_apl_shutdown_on_zero_raw 31212 # reg 31213
-        input_type: holding
-        data_type: uint16
-        state_class: measurement
-        scan_interval: *scan_interval_fast
+      # - name: APL shutdown at zero raw
+      #   unique_id: sg_apl_shutdown_on_zero_raw
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_apl_shutdown_on_zero_raw 31212 # reg 31213
+      #   input_type: holding
+      #   data_type: uint16
+      #   state_class: measurement
+      #   scan_interval: *scan_interval_fast
 
       # NOTE: datasheet (1.1.11) states 0.01kW as unit (scale=100)
-      - name: Battery max charge power
-        unique_id: sg_battery_max_charge_power
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_battery_max_charge_power 33046 # reg 33047
-        input_type: holding
-        data_type: uint16
-        precision: 0
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 10
-        scan_interval: *scan_interval_fast
+      # - name: Battery max charge power
+      #   unique_id: sg_battery_max_charge_power
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_battery_max_charge_power 33046 # reg 33047
+      #   input_type: holding
+      #   data_type: uint16
+      #   precision: 0
+      #   unit_of_measurement: W
+      #   device_class: power
+      #   state_class: measurement
+      #   scale: 10
+      #   scan_interval: *scan_interval_fast
 
       # NOTE: datasheet (1.1.11) states 0.01kW as unit (scale=100)
-      - name: Battery max discharge power
-        unique_id: sg_battery_max_discharge_power
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_battery_max_discharge_power 33047 # reg 33048
-        input_type: holding
-        data_type: uint16
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 10
-        scan_interval: *scan_interval_fast
+      # - name: Battery max discharge power
+      #   unique_id: sg_battery_max_discharge_power
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_battery_max_discharge_power 33047 # reg 33048
+      #   input_type: holding
+      #   data_type: uint16
+      #   unit_of_measurement: W
+      #   device_class: power
+      #   state_class: measurement
+      #   scale: 10
+      #   scan_interval: *scan_interval_fast
 
       # undocumented sensor (reverse engineered by some guys of photovoltaikforum.com and forum.iobroker.net )
       # not available on SHxRS as per https://github.com/mkaiser/Sungrow-SHx-Inverter-Modbus-Home-Assistant/issues/743
-      - name: Battery charging start power
-        unique_id: sg_battery_charging_start_power
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_battery_charging_start_power 33148 # reg 33149
-        input_type: holding
-        data_type: uint16
-        nan_value: 0xFFFF
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 10
-        scan_interval: *scan_interval_fast
+      # - name: Battery charging start power
+      #   unique_id: sg_battery_charging_start_power
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_battery_charging_start_power 33148 # reg 33149
+      #   input_type: holding
+      #   data_type: uint16
+      #   nan_value: 0xFFFF
+      #   unit_of_measurement: W
+      #   device_class: power
+      #   state_class: measurement
+      #   scale: 10
+      #   scan_interval: *scan_interval_fast
 
       # undocumented sensor (reverse engineered by some guys of photovoltaikforum.com and forum.iobroker.net )
       # not available on SHxRS as per https://github.com/mkaiser/Sungrow-SHx-Inverter-Modbus-Home-Assistant/issues/743
-      - name: Battery discharging start power
-        unique_id: sg_battery_discharging_start_power
-        device_address: !secret sungrow_modbus_device_address
-        address: &sg_reg_battery_discharging_start_power 33149 # reg 33150
-        input_type: holding
-        data_type: uint16
-        nan_value: 0xFFFF
-        precision: 0
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
-        scale: 10
-        scan_interval: *scan_interval_fast
+      # - name: Battery discharging start power
+      #   unique_id: sg_battery_discharging_start_power
+      #   device_address: !secret sungrow_modbus_device_address
+      #   address: &sg_reg_battery_discharging_start_power 33149 # reg 33150
+      #   input_type: holding
+      #   data_type: uint16
+      #   nan_value: 0xFFFF
+      #   precision: 0
+      #   unit_of_measurement: W
+      #   device_class: power
+      #   state_class: measurement
+      #   scale: 10
+      #   scan_interval: *scan_interval_fast
 
       #####################
       # modbus switches
