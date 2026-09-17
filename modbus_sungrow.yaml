@@ -1403,47 +1403,47 @@ modbus:
       #     state_off: 0x55
       #     delay: 1
 
-      - name: Backup Mode
-        unique_id: sg_backup_mode_switch
-        slave: !secret sungrow_modbus_device_address
-        address: *sg_reg_backup_mode
-        write_type: holding
-        command_on: 0xAA
-        command_off: 0x55
-        verify:
-          input_type: holding
-          address: *sg_reg_backup_mode
-          state_on: 0xAA
-          state_off: 0x55
-          delay: 1
+      # - name: Backup Mode
+      #   unique_id: sg_backup_mode_switch
+      #   slave: !secret sungrow_modbus_device_address
+      #   address: *sg_reg_backup_mode
+      #   write_type: holding
+      #   command_on: 0xAA
+      #   command_off: 0x55
+      #   verify:
+      #     input_type: holding
+      #     address: *sg_reg_backup_mode
+      #     state_on: 0xAA
+      #     state_off: 0x55
+      #     delay: 1
 
-      - name: Export power limit
-        unique_id: sg_export_power_limit_switch
-        slave: !secret sungrow_modbus_device_address
-        address: *sg_reg_export_power_limit_mode
-        write_type: holding
-        command_on: 0xAA
-        command_off: 0x55
-        verify:
-          input_type: holding
-          address: *sg_reg_export_power_limit_mode
-          state_on: 0xAA
-          state_off: 0x55
-          delay: 1
+      # - name: Export power limit
+      #   unique_id: sg_export_power_limit_switch
+      #   slave: !secret sungrow_modbus_device_address
+      #   address: *sg_reg_export_power_limit_mode
+      #   write_type: holding
+      #   command_on: 0xAA
+      #   command_off: 0x55
+      #   verify:
+      #     input_type: holding
+      #     address: *sg_reg_export_power_limit_mode
+      #     state_on: 0xAA
+      #     state_off: 0x55
+      #     delay: 1
 
-      - name: Load adjustment mode
-        unique_id: sg_load_adjustment_mode_switch
-        slave: !secret sungrow_modbus_device_address
-        address: *sg_reg_load_adjustment_mode_enable
-        write_type: holding
-        command_on: 0xAA
-        command_off: 0x55
-        verify:
-          input_type: holding
-          address: *sg_reg_load_adjustment_mode_enable
-          state_on: 0xAA
-          state_off: 0x55
-          delay: 1
+      # - name: Load adjustment mode
+      #   unique_id: sg_load_adjustment_mode_switch
+      #   slave: !secret sungrow_modbus_device_address
+      #   address: *sg_reg_load_adjustment_mode_enable
+      #   write_type: holding
+      #   command_on: 0xAA
+      #   command_off: 0x55
+      #   verify:
+      #     input_type: holding
+      #     address: *sg_reg_load_adjustment_mode_enable
+      #     state_on: 0xAA
+      #     state_off: 0x55
+      #     delay: 1
 
 sensor:
   - platform: filter
