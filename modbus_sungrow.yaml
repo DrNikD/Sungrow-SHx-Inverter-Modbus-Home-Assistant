@@ -1744,27 +1744,27 @@ template:
       #       target:
       #         entity_id: sensor.battery_max_discharge_power
 
-      - name: Export power limit
-        unique_id: uid_export_power_limit
-        unit_of_measurement: W
-        min: "{{ states('sensor.export_power_limit_min') }}"
-        max: "{{ states('sensor.export_power_limit_max') }}"
-        step: 100
-        availability: "{{ states('sensor.export_power_limit')|is_number and states('sensor.export_power_limit_min')|is_number and states('sensor.export_power_limit_max')|is_number }}"
-        # modbus --> UI
-        state: "{{ states('sensor.export_power_limit') }}"
-        # UI --> modbus
-        set_value:
-          - action: modbus.write_register
-            data_template:
-              hub: *sg_hub_name
-              slave: !secret sungrow_modbus_device_address
-              address: *sg_reg_export_power_limit
-              value: "{{ value | int }}"
-          # manually refresh modbus register
-          - action: homeassistant.update_entity
-            target:
-              entity_id: sensor.export_power_limit
+      # - name: Export power limit
+      #   unique_id: uid_export_power_limit
+      #   unit_of_measurement: W
+      #   min: "{{ states('sensor.export_power_limit_min') }}"
+      #   max: "{{ states('sensor.export_power_limit_max') }}"
+      #   step: 100
+      #   availability: "{{ states('sensor.export_power_limit')|is_number and states('sensor.export_power_limit_min')|is_number and states('sensor.export_power_limit_max')|is_number }}"
+      #   # modbus --> UI
+      #   state: "{{ states('sensor.export_power_limit') }}"
+      #   # UI --> modbus
+      #   set_value:
+      #     - action: modbus.write_register
+      #       data_template:
+      #         hub: *sg_hub_name
+      #         slave: !secret sungrow_modbus_device_address
+      #         address: *sg_reg_export_power_limit
+      #         value: "{{ value | int }}"
+      #     # manually refresh modbus register
+      #     - action: homeassistant.update_entity
+      #       target:
+      #         entity_id: sensor.export_power_limit
 
   ####################
   # template: sensor
