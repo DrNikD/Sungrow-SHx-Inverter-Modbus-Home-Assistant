@@ -1179,31 +1179,31 @@ modbus:
       #   state_class: measurement
       #   scan_interval: *scan_interval_fast
 
-      # - name: Battery max SoC
-      #   unique_id: uid_sg_battery_max_soc
-      #   device_address: !secret sungrow_modbus_device_address
-      #   address: &sg_reg_max_soc 13057 # reg 13058
-      #   input_type: holding
-      #   data_type: uint16
-      #   precision: 1
-      #   unit_of_measurement: "%"
-      #   device_class: battery
-      #   state_class: measurement
-      #   scale: 0.1
-      #   scan_interval: *scan_interval_fast
+      - name: Battery max SoC
+        unique_id: uid_sg_battery_max_soc
+        device_address: !secret sungrow_modbus_device_address
+        address: &sg_reg_max_soc 13057 # reg 13058
+        input_type: holding
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: "%"
+        device_class: battery
+        state_class: measurement
+        scale: 0.1
+        scan_interval: *scan_interval_fast
 
-      # - name: Battery min SoC
-      #   unique_id: uid_sg_battery_min_soc
-      #   device_address: !secret sungrow_modbus_device_address
-      #   address: &sg_reg_min_soc 13058 # reg 13059
-      #   input_type: holding
-      #   data_type: uint16
-      #   precision: 1
-      #   unit_of_measurement: "%"
-      #   device_class: battery
-      #   state_class: measurement
-      #   scale: 0.1
-      #   scan_interval: *scan_interval_fast
+      - name: Battery min SoC
+        unique_id: uid_sg_battery_min_soc
+        device_address: !secret sungrow_modbus_device_address
+        address: &sg_reg_min_soc 13058 # reg 13059
+        input_type: holding
+        data_type: uint16
+        precision: 1
+        unit_of_measurement: "%"
+        device_class: battery
+        state_class: measurement
+        scale: 0.1
+        scan_interval: *scan_interval_fast
 
       # # in the documentation this is called "feed-in power limit"
       # - name: Export power limit
