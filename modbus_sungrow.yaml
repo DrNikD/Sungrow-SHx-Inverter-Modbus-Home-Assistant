@@ -1628,121 +1628,121 @@ template:
       # If currently achievable charging power drops below this threshold, charging will stop. Actual charging power (limited by register 33047) is ignored.
       # Charging might stop before reaching 100% if set too close to the maximum charging power of the battery, due to achievable charging power naturally dropping at high state of charge.
       # set_sg_battery_charging_start_power:
-      - name: Battery charging start power
-        unique_id: uid_battery_charging_start_power
-        unit_of_measurement: W
-        min: 0
-        max: 1000
-        # The charging and the discharging options are meant to save the battery from frequent cycling between
-        # charging and discharging. I am pretty confident, that a max: value for the number is ok with 1000W.
-        # Please open an issue, if other values are needed.
-        step: 10
-        availability: "{{ states('sensor.battery_charging_start_power') | is_number }}"
-        # modbus --> UI
-        state: "{{ states('sensor.battery_charging_start_power') }}"
-        # UI --> modbus
-        set_value:
-          - action: modbus.write_register
-            data_template:
-              hub: *sg_hub_name
-              slave: !secret sungrow_modbus_device_address
-              address: *sg_reg_battery_charging_start_power
-              value: "{{ value | float /10 }}"
-          # manually refresh modbus register
-          - action: homeassistant.update_entity
-            target:
-              entity_id: sensor.battery_charging_start_power
+      # - name: Battery charging start power
+      #   unique_id: uid_battery_charging_start_power
+      #   unit_of_measurement: W
+      #   min: 0
+      #   max: 1000
+      #   # The charging and the discharging options are meant to save the battery from frequent cycling between
+      #   # charging and discharging. I am pretty confident, that a max: value for the number is ok with 1000W.
+      #   # Please open an issue, if other values are needed.
+      #   step: 10
+      #   availability: "{{ states('sensor.battery_charging_start_power') | is_number }}"
+      #   # modbus --> UI
+      #   state: "{{ states('sensor.battery_charging_start_power') }}"
+      #   # UI --> modbus
+      #   set_value:
+      #     - action: modbus.write_register
+      #       data_template:
+      #         hub: *sg_hub_name
+      #         slave: !secret sungrow_modbus_device_address
+      #         address: *sg_reg_battery_charging_start_power
+      #         value: "{{ value | float /10 }}"
+      #     # manually refresh modbus register
+      #     - action: homeassistant.update_entity
+      #       target:
+      #         entity_id: sensor.battery_charging_start_power
 
-      - name: Battery discharging start power
-        unique_id: uid_battery_discharging_start_power
-        unit_of_measurement: W
-        min: 0
-        max: 1000
-        # The charging and the discharging options are meant to save the battery from frequent cycling between
-        # charging and discharging. I am pretty confident, that a max: value for the number is ok with 1000W
-        # Please open an issue, if other values are needed.
-        step: 10
-        availability: "{{ states('sensor.battery_discharging_start_power') | is_number }}"
-        # modbus --> UI
-        state: "{{ states('sensor.battery_discharging_start_power') }}"
-        # UI --> modbus
-        set_value:
-          - action: modbus.write_register
-            data_template:
-              hub: *sg_hub_name
-              slave: !secret sungrow_modbus_device_address
-              address: *sg_reg_battery_discharging_start_power
-              value: "{{ value | float /10 |int}}"
-          # manually refresh modbus register
-          - action: homeassistant.update_entity
-            target:
-              entity_id: sensor.battery_discharging_start_power
+      # - name: Battery discharging start power
+      #   unique_id: uid_battery_discharging_start_power
+      #   unit_of_measurement: W
+      #   min: 0
+      #   max: 1000
+      #   # The charging and the discharging options are meant to save the battery from frequent cycling between
+      #   # charging and discharging. I am pretty confident, that a max: value for the number is ok with 1000W
+      #   # Please open an issue, if other values are needed.
+      #   step: 10
+      #   availability: "{{ states('sensor.battery_discharging_start_power') | is_number }}"
+      #   # modbus --> UI
+      #   state: "{{ states('sensor.battery_discharging_start_power') }}"
+      #   # UI --> modbus
+      #   set_value:
+      #     - action: modbus.write_register
+      #       data_template:
+      #         hub: *sg_hub_name
+      #         slave: !secret sungrow_modbus_device_address
+      #         address: *sg_reg_battery_discharging_start_power
+      #         value: "{{ value | float /10 |int}}"
+      #     # manually refresh modbus register
+      #     - action: homeassistant.update_entity
+      #       target:
+      #         entity_id: sensor.battery_discharging_start_power
 
-      - name: Battery forced charge discharge power
-        unique_id: uid_battery_forced_charge_discharge_power
-        unit_of_measurement: W
-        min: 0
-        max: !secret sungrow_modbus_battery_max_power
-        step: 100
-        availability: "{{ states('sensor.battery_forced_charge_discharge_power') | is_number }}"
-        # modbus --> UI
-        state: "{{ states('sensor.battery_forced_charge_discharge_power') }}"
-        # UI --> modbus
-        set_value:
-          - action: modbus.write_register
-            data_template:
-              hub: *sg_hub_name
-              slave: !secret sungrow_modbus_device_address
-              address: *sg_reg_battery_forced_charge_discharge_power
-              value: "{{ value | int }}"
-          # manually refresh modbus register
-          - action: homeassistant.update_entity
-            target:
-              entity_id: sensor.battery_forced_charge_discharge_power
+      # - name: Battery forced charge discharge power
+      #   unique_id: uid_battery_forced_charge_discharge_power
+      #   unit_of_measurement: W
+      #   min: 0
+      #   max: !secret sungrow_modbus_battery_max_power
+      #   step: 100
+      #   availability: "{{ states('sensor.battery_forced_charge_discharge_power') | is_number }}"
+      #   # modbus --> UI
+      #   state: "{{ states('sensor.battery_forced_charge_discharge_power') }}"
+      #   # UI --> modbus
+      #   set_value:
+      #     - action: modbus.write_register
+      #       data_template:
+      #         hub: *sg_hub_name
+      #         slave: !secret sungrow_modbus_device_address
+      #         address: *sg_reg_battery_forced_charge_discharge_power
+      #         value: "{{ value | int }}"
+      #     # manually refresh modbus register
+      #     - action: homeassistant.update_entity
+      #       target:
+      #         entity_id: sensor.battery_forced_charge_discharge_power
 
-      - name: Battery max charge power
-        unique_id: uid_battery_max_charge_power
-        unit_of_measurement: W
-        min: 10 # 10W minimum defined in datasheet: 0.01 kW
-        max: !secret sungrow_modbus_battery_max_power
-        step: 100
-        availability: "{{ states('sensor.battery_max_charge_power') | is_number }}"
-        # modbus --> UI
-        state: "{{ states('sensor.battery_max_charge_power') }}"
-        # UI --> modbus
-        set_value:
-          - action: modbus.write_register
-            data_template:
-              hub: *sg_hub_name
-              slave: !secret sungrow_modbus_device_address
-              address: *sg_reg_battery_max_charge_power
-              value: "{{ value | float / 10 | int}}"
-          # manually refresh modbus register
-          - action: homeassistant.update_entity
-            target:
-              entity_id: sensor.battery_max_charge_power
+      # - name: Battery max charge power
+      #   unique_id: uid_battery_max_charge_power
+      #   unit_of_measurement: W
+      #   min: 10 # 10W minimum defined in datasheet: 0.01 kW
+      #   max: !secret sungrow_modbus_battery_max_power
+      #   step: 100
+      #   availability: "{{ states('sensor.battery_max_charge_power') | is_number }}"
+      #   # modbus --> UI
+      #   state: "{{ states('sensor.battery_max_charge_power') }}"
+      #   # UI --> modbus
+      #   set_value:
+      #     - action: modbus.write_register
+      #       data_template:
+      #         hub: *sg_hub_name
+      #         slave: !secret sungrow_modbus_device_address
+      #         address: *sg_reg_battery_max_charge_power
+      #         value: "{{ value | float / 10 | int}}"
+      #     # manually refresh modbus register
+      #     - action: homeassistant.update_entity
+      #       target:
+      #         entity_id: sensor.battery_max_charge_power
 
-      - name: Battery max discharge power
-        unique_id: uid_battery_max_discharge_power
-        unit_of_measurement: W
-        min: 10 # 10W minimum defined in datasheet: 0.01 kW
-        max: !secret sungrow_modbus_battery_max_power
-        step: 100
-        availability: "{{ states('sensor.battery_max_discharge_power') | is_number }}"
-        # modbus --> UI
-        state: "{{ states('sensor.battery_max_discharge_power') }}"
-        # UI --> modbus
-        set_value:
-          - action: modbus.write_register
-            data_template:
-              hub: *sg_hub_name
-              slave: !secret sungrow_modbus_device_address
-              address: *sg_reg_battery_max_discharge_power
-              value: "{{ value| float / 10 | int}}"
-          # manually refresh modbus register
-          - action: homeassistant.update_entity
-            target:
-              entity_id: sensor.battery_max_discharge_power
+      # - name: Battery max discharge power
+      #   unique_id: uid_battery_max_discharge_power
+      #   unit_of_measurement: W
+      #   min: 10 # 10W minimum defined in datasheet: 0.01 kW
+      #   max: !secret sungrow_modbus_battery_max_power
+      #   step: 100
+      #   availability: "{{ states('sensor.battery_max_discharge_power') | is_number }}"
+      #   # modbus --> UI
+      #   state: "{{ states('sensor.battery_max_discharge_power') }}"
+      #   # UI --> modbus
+      #   set_value:
+      #     - action: modbus.write_register
+      #       data_template:
+      #         hub: *sg_hub_name
+      #         slave: !secret sungrow_modbus_device_address
+      #         address: *sg_reg_battery_max_discharge_power
+      #         value: "{{ value| float / 10 | int}}"
+      #     # manually refresh modbus register
+      #     - action: homeassistant.update_entity
+      #       target:
+      #         entity_id: sensor.battery_max_discharge_power
 
       - name: Export power limit
         unique_id: uid_export_power_limit
