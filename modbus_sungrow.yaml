@@ -1153,15 +1153,15 @@ modbus:
         state_class: measurement
         scan_interval: *scan_interval_fast
 
-      # - name: Battery forced charge discharge cmd raw
-      #   unique_id: sg_battery_forced_charge_discharge_cmd_raw
-      #   device_address: !secret sungrow_modbus_device_address
-      #   address: &sg_reg_forced_charge_discharge_cmd_raw 13050 # reg 13051
-      #   input_type: holding
-      #   data_type: uint16
-      #   precision: 0
-      #   state_class: measurement
-      #   scan_interval: *scan_interval_fast
+      - name: Battery forced charge discharge cmd raw
+        unique_id: sg_battery_forced_charge_discharge_cmd_raw
+        device_address: !secret sungrow_modbus_device_address
+        address: &sg_reg_forced_charge_discharge_cmd_raw 13050 # reg 13051
+        input_type: holding
+        data_type: uint16
+        precision: 0
+        state_class: measurement
+        scan_interval: *scan_interval_fast
 
       # - name: Battery forced charge discharge power
       #   unique_id: sg_battery_forced_charge_discharge_power
